@@ -1,120 +1,161 @@
-# Titanic Survival Prediction 🚢
+# Heart Disease Prediction using Machine Learning
 
-Machine Learning project that predicts whether a passenger survived the Titanic disaster using passenger data.
+## Project Overview
+
+This project uses Machine Learning algorithms to predict whether a patient has heart disease based on medical attributes such as age, cholesterol level, chest pain type, and maximum heart rate.
+
+The goal is to build and compare multiple classification models to determine which performs best for predicting heart disease.
 
 ---
 
-## 📊 Dataset
+## Dataset
 
-The dataset contains information about Titanic passengers such as:
+The dataset contains medical attributes related to heart disease diagnosis.
 
-- Passenger Class (Pclass)
-- Age
-- Sex
-- Fare
-- Family Size
+Features include:
+
+* age
+* sex
+* cp (chest pain type)
+* trestbps (resting blood pressure)
+* chol (cholesterol)
+* fbs (fasting blood sugar)
+* restecg (resting electrocardiographic results)
+* thalach (maximum heart rate achieved)
+* exang (exercise induced angina)
+* oldpeak (ST depression induced by exercise)
+* slope
+* ca
+* thal
 
 Target variable:
 
-Survived  
-0 = Did not survive  
-1 = Survived
-
-Dataset source: Kaggle Titanic Dataset
-
----
-
-## 🧠 Models Used
-
-The following Machine Learning models were tested:
-
-| Model | Accuracy |
-|------|------|
-| Logistic Regression | ~79% |
-| K-Nearest Neighbors | ~82% |
-| Random Forest | ~86-88% |
+```
+target
+0 = No heart disease
+1 = Heart disease
+```
 
 ---
 
-## ⚙️ Features Used
+## Project Workflow
 
-The model was trained using the following features:
+### 1. Data Loading
 
-- Pclass
-- Age
-- Fare
-- Sex
-- FamilySize (engineered feature)
-
-Feature engineering:
-FamilySize = SibSp + Parch + 1
+The dataset is loaded using **Pandas** and inspected to understand its structure.
 
 ---
 
-## 🧹 Data Preprocessing
+### 2. Exploratory Data Analysis (EDA)
 
-Steps performed before training:
+Several techniques were used to explore the dataset:
 
-- Missing values in Age filled using mean
-- Sex converted to numerical values
-- New feature created: FamilySize
-- Train/Test split (80/20)
+* Data statistics
+* Feature distribution
+* Correlation heatmap
+
+A correlation heatmap was used to visualize relationships between features and the target variable.
 
 ---
 
-## 📈 Model Evaluation
+### 3. Data Preparation
 
-Evaluation metric used:
+The dataset was prepared for machine learning by separating:
+
+```
+Features (X)
+Target (y)
+```
+
+---
+
+### 4. Train/Test Split
+
+The dataset was split into training and testing sets:
+
+```
+80% Training
+20% Testing
+```
+
+This allows the model to be evaluated on unseen data.
+
+---
+
+### 5. Model Training
+
+Three machine learning models were trained and evaluated:
+
+* Logistic Regression
+* Decision Tree
+* Random Forest
+
+Each model was trained using the training dataset and tested using the testing dataset.
+
+---
+
+### 6. Model Evaluation
+
+Model performance was evaluated using:
+
+```
 Accuracy Score
+Confusion Matrix
+```
 
-Example result:
-Accuracy: 0.87
-
----
-
-## 🛠 Technologies Used
-
-- Python
-- Pandas
-- Scikit-learn
-- Jupyter Notebook
-- Matplotlib
-- Seaborn
+Results showed that **Random Forest** and **Logistic Regression** performed well on this dataset.
 
 ---
 
-## 🚀 How to Run
+## Model Comparison
 
-Clone the repository:
+The models were compared using a bar chart to visualize their accuracy scores.
 
-git clone https://github.com/WorodHazim/titanic-ml-prediction.git
+Example models tested:
 
-
-Install dependencies:
-pip install pandas scikit-learn matplotlib seaborn
-
-Run the notebook:
-jupyter notebook
-
-
-Open:
-TitanicSurvivalPrediction.ipynb
+| Model               | Accuracy |
+| ------------------- | -------- |
+| Logistic Regression | ~0.88    |
+| Decision Tree       | ~0.73    |
+| Random Forest       | ~0.88    |
 
 ---
 
-## 📌 Project Goal
+## Technologies Used
 
-Practice a full Machine Learning workflow:
-
-- Data cleaning
-- Feature engineering
-- Model training
-- Model comparison
-- Model evaluation
+* Python
+* Pandas
+* NumPy
+* Scikit-learn
+* Matplotlib
+* Seaborn
+* Jupyter Notebook
 
 ---
 
-## 👩‍💻 Author
+## Key Learning Points
 
-Worod Hazim  
-AI & Machine Learning Student
+This project demonstrates:
+
+* Exploratory Data Analysis (EDA)
+* Feature correlation analysis
+* Training multiple machine learning models
+* Evaluating model performance
+* Comparing models using visualization
+
+---
+
+## Future Improvements
+
+Possible improvements include:
+
+* Hyperparameter tuning
+* Cross-validation
+* Feature engineering
+* Testing additional machine learning models
+
+---
+
+## Author
+
+Machine Learning practice project built as part of a learning roadmap.
