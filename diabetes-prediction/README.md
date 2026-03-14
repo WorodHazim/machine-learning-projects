@@ -1,120 +1,142 @@
-# Titanic Survival Prediction 🚢
+# Diabetes Prediction using Machine Learning
 
-Machine Learning project that predicts whether a passenger survived the Titanic disaster using passenger data.
+## Project Overview
+
+This project uses Machine Learning to predict whether a patient has diabetes based on medical diagnostic features such as glucose level, BMI, age, and blood pressure.
+
+The dataset used is the **Pima Indians Diabetes Dataset**, a well-known dataset for binary classification problems in healthcare.
 
 ---
 
-## 📊 Dataset
+## Dataset
 
-The dataset contains information about Titanic passengers such as:
+Source:
+https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv
 
-- Passenger Class (Pclass)
-- Age
-- Sex
-- Fare
-- Family Size
+Features used in the dataset:
+
+* Pregnancies
+* Glucose
+* BloodPressure
+* SkinThickness
+* Insulin
+* BMI
+* DiabetesPedigree
+* Age
 
 Target variable:
 
-Survived  
-0 = Did not survive  
-1 = Survived
-
-Dataset source: Kaggle Titanic Dataset
-
----
-
-## 🧠 Models Used
-
-The following Machine Learning models were tested:
-
-| Model | Accuracy |
-|------|------|
-| Logistic Regression | ~79% |
-| K-Nearest Neighbors | ~82% |
-| Random Forest | ~86-88% |
+```
+Outcome
+0 = No Diabetes
+1 = Diabetes
+```
 
 ---
 
-## ⚙️ Features Used
+## Project Steps
 
-The model was trained using the following features:
+### 1. Data Loading
 
-- Pclass
-- Age
-- Fare
-- Sex
-- FamilySize (engineered feature)
+The dataset is loaded using **Pandas**.
 
-Feature engineering:
-FamilySize = SibSp + Parch + 1
+### 2. Exploratory Data Analysis (EDA)
 
----
+* Data statistics
+* Correlation heatmap
+* Distribution analysis
 
-## 🧹 Data Preprocessing
+### 3. Data Cleaning
 
-Steps performed before training:
+Some features contained invalid values (`0`) such as:
 
-- Missing values in Age filled using mean
-- Sex converted to numerical values
-- New feature created: FamilySize
-- Train/Test split (80/20)
+* Glucose
+* BloodPressure
+* BMI
+* Insulin
 
----
+These values were treated as missing data and replaced with the **mean value of each column**.
 
-## 📈 Model Evaluation
+### 4. Feature Scaling
 
-Evaluation metric used:
-Accuracy Score
+The dataset features were scaled using:
 
-Example result:
-Accuracy: 0.87
+```
+StandardScaler
+```
 
----
+This is important for algorithms that rely on distance calculations such as **KNN**.
 
-## 🛠 Technologies Used
+### 5. Train/Test Split
 
-- Python
-- Pandas
-- Scikit-learn
-- Jupyter Notebook
-- Matplotlib
-- Seaborn
+The dataset was split into:
 
----
+```
+80% Training Data
+20% Testing Data
+```
 
-## 🚀 How to Run
+### 6. Model Training
 
-Clone the repository:
+Three machine learning models were trained:
 
-git clone https://github.com/WorodHazim/titanic-ml-prediction.git
+* Logistic Regression
+* K-Nearest Neighbors (KNN)
+* Random Forest
 
+### 7. Model Evaluation
 
-Install dependencies:
-pip install pandas scikit-learn matplotlib seaborn
+Accuracy was used to evaluate the models.
 
-Run the notebook:
-jupyter notebook
+Results:
 
-
-Open:
-TitanicSurvivalPrediction.ipynb
+| Model               | Accuracy |
+| ------------------- | -------- |
+| Logistic Regression | ~0.75    |
+| KNN                 | ~0.74    |
+| Random Forest       | ~0.75    |
 
 ---
 
-## 📌 Project Goal
+## Technologies Used
 
-Practice a full Machine Learning workflow:
-
-- Data cleaning
-- Feature engineering
-- Model training
-- Model comparison
-- Model evaluation
+* Python
+* Pandas
+* NumPy
+* Scikit-learn
+* Seaborn
+* Matplotlib
+* Jupyter Notebook
 
 ---
 
-## 👩‍💻 Author
+## Visualization
 
-Worod Hazim  
-AI & Machine Learning Student
+Model comparison was visualized using a **bar chart** to compare accuracy across models.
+
+---
+
+## Key Learning Points
+
+* Handling missing data
+* Feature scaling with StandardScaler
+* Using KNN for classification
+* Comparing multiple machine learning models
+* Visualizing model performance
+
+---
+
+## Future Improvements
+
+Possible improvements include:
+
+* Hyperparameter tuning
+* Cross-validation
+* Using additional ML models
+* Feature engineering
+
+---
+
+## Author
+
+Machine Learning practice project built as part of a learning roadmap.
